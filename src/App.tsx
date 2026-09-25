@@ -847,10 +847,10 @@ function SolutionApp() {
 
         {/* Tab 2: Operational Data Portal / Entity Registry */}
         {activeTab === 'portal' && (
-          <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-slate-900/90 border border-slate-800/80 p-4 rounded-xl">
-              <div className="flex items-center gap-2 flex-1">
-                <div className="relative flex-1 max-w-sm">
+          <div className="w-full space-y-4">
+            <div className="w-full flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-slate-900/90 border border-slate-800/80 p-4 rounded-xl">
+              <div className="flex items-center gap-2 flex-1 min-w-0">
+                <div className="relative flex-1 max-w-md">
                   <Search className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
@@ -903,9 +903,9 @@ function SolutionApp() {
             </div>
 
             {/* Main Operational Table */}
-            <div className="rounded-xl border border-slate-800/80 bg-slate-900/90 overflow-hidden shadow-lg">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-slate-300">
+            <div className="w-full rounded-xl border border-slate-800/80 bg-slate-900/90 overflow-hidden shadow-lg">
+              <div className="w-full overflow-x-auto">
+                <table className="w-full text-left text-xs text-slate-300 min-w-[650px]">
                   <thead className="bg-slate-950/80 text-[11px] font-semibold text-slate-400 uppercase tracking-wider border-b border-slate-800">
                     <tr>
                       <th className="py-3 px-4">Identifier</th>
@@ -973,8 +973,8 @@ function SolutionApp() {
 
         {/* Tab 3: Architecture & DB Telemetry */}
         {activeTab === 'architecture' && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between bg-slate-900/90 border border-slate-800/80 p-4 rounded-xl">
+          <div className="w-full space-y-6">
+            <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/90 border border-slate-800/80 p-4 rounded-xl">
               <div>
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
                   <Server className="size-4 text-indigo-400" />
@@ -986,14 +986,14 @@ function SolutionApp() {
               </div>
               <button
                 onClick={handlePingTest}
-                className="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition flex items-center gap-2 cursor-pointer"
+                className="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition flex items-center gap-2 cursor-pointer shrink-0"
               >
                 <RefreshCw className={`size-3.5 ${isPinging ? 'animate-spin' : ''}`} />
                 <span>Test Gateway Ping ({dbLatency}ms)</span>
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
               {(DOMAIN_SCHEMA.architecture || []).map((arch) => (
                 <div key={arch.id} className="rounded-xl bg-slate-900/90 border border-slate-800/80 p-5 space-y-3 hover:border-slate-700 transition">
                   <div className="flex items-start justify-between gap-3">
@@ -1020,7 +1020,7 @@ function SolutionApp() {
             </div>
 
             {/* DDL Schema Preview */}
-            <div className="rounded-xl bg-slate-950 border border-slate-800/80 p-5 space-y-2">
+            <div className="w-full rounded-xl bg-slate-950 border border-slate-800/80 p-5 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-300 font-mono">supabase/schema.sql (Active PostgreSQL DDL)</span>
                 <span className="text-[11px] text-emerald-400 font-mono">RLS Enabled · Live</span>
