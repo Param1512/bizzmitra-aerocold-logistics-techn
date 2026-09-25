@@ -326,7 +326,7 @@ function SolutionApp() {
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans flex flex-col md:flex-row selection:bg-amber-500/30 selection:text-amber-200">
       {/* Toast Notification */}
       {authToast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-amber-600 border border-amber-400/40 text-white px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold animate-in fade-in slide-in-from-bottom-3 duration-200">
+        <div className="fixed bottom-6 right-6 z-50 bg-violet-600 border border-amber-400/40 text-white px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold animate-in fade-in slide-in-from-bottom-3 duration-200">
           <Sparkles className="size-4 text-amber-300" />
           <span>{authToast}</span>
         </div>
@@ -340,7 +340,7 @@ function SolutionApp() {
           <div className="space-y-4">
             {/* Brand */}
             <div className="flex items-center gap-2.5">
-              <div className="size-8 rounded-xl flex items-center justify-center text-white shadow-md shrink-0 bg-amber-600 shadow-amber-500/20">
+              <div className="size-8 rounded-xl flex items-center justify-center text-white shadow-md shrink-0 bg-violet-600 shadow-violet-500/20">
                 <Building2 className="size-4" />
               </div>
               <div className="min-w-0">
@@ -383,7 +383,7 @@ function SolutionApp() {
               ) : (
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
-                  className="w-full py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-xs font-bold text-white flex items-center justify-center gap-1 cursor-pointer"
+                  className="w-full py-1.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-xs font-bold text-white flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <LogIn className="size-3" />
                   <span>Log In / Demo Roles</span>
@@ -397,7 +397,7 @@ function SolutionApp() {
                 onClick={() => setActiveTab('overview')}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition text-left cursor-pointer ${
                   activeTab === 'overview'
-                    ? 'bg-amber-600 text-white shadow-sm font-bold'
+                    ? 'bg-violet-600 text-white shadow-sm font-bold'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
@@ -411,7 +411,7 @@ function SolutionApp() {
                 onClick={() => setActiveTab('portal')}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition text-left cursor-pointer ${
                   activeTab === 'portal'
-                    ? 'bg-amber-600 text-white shadow-sm font-bold'
+                    ? 'bg-violet-600 text-white shadow-sm font-bold'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
@@ -428,7 +428,7 @@ function SolutionApp() {
                 onClick={() => setActiveTab('architecture')}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition text-left cursor-pointer ${
                   activeTab === 'architecture'
-                    ? 'bg-amber-600 text-white shadow-sm font-bold'
+                    ? 'bg-violet-600 text-white shadow-sm font-bold'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
@@ -442,7 +442,7 @@ function SolutionApp() {
                 onClick={() => setActiveTab('roadmap')}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition text-left cursor-pointer ${
                   activeTab === 'roadmap'
-                    ? 'bg-amber-600 text-white shadow-sm font-bold'
+                    ? 'bg-violet-600 text-white shadow-sm font-bold'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
@@ -456,7 +456,7 @@ function SolutionApp() {
                 onClick={() => setActiveTab('team')}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition text-left cursor-pointer ${
                   activeTab === 'team'
-                    ? 'bg-amber-600 text-white shadow-sm font-bold'
+                    ? 'bg-violet-600 text-white shadow-sm font-bold'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
@@ -470,7 +470,7 @@ function SolutionApp() {
                 onClick={() => setActiveTab('analytics')}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition text-left cursor-pointer ${
                   activeTab === 'analytics'
-                    ? 'bg-amber-600 text-white shadow-sm font-bold'
+                    ? 'bg-violet-600 text-white shadow-sm font-bold'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
@@ -485,7 +485,7 @@ function SolutionApp() {
             <div className="pt-2 border-t border-slate-800 space-y-1.5">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="w-full flex items-center justify-center gap-1.5 rounded-xl py-2 px-3 text-xs font-bold text-white transition cursor-pointer shadow-md bg-amber-600 hover:bg-amber-500"
+                className="w-full flex items-center justify-center gap-1.5 rounded-xl py-2 px-3 text-xs font-bold text-white transition cursor-pointer shadow-md bg-violet-600 hover:bg-violet-500"
               >
                 <Plus className="size-3.5" />
                 <span>New {DOMAIN_SCHEMA.entityName}</span>
@@ -580,7 +580,7 @@ function SolutionApp() {
               <span className="text-slate-500 font-bold uppercase text-[9px]">Active Persona:</span>
               <span className="font-semibold text-white truncate">{currentUser.name}</span>
               <span className="text-slate-500">•</span>
-              <span className="font-medium truncate text-amber-400">{currentUser.role}</span>
+              <span className="font-medium truncate text-violet-400">{currentUser.role}</span>
               <span className="hidden md:inline text-slate-500">•</span>
               <span className="hidden md:inline text-slate-400">{currentUser.department}</span>
             </div>
@@ -590,7 +590,7 @@ function SolutionApp() {
               </span>
               <button
                 onClick={() => { setAuthTab('demo'); setIsAuthModalOpen(true); }}
-                className="text-[10px] font-bold underline cursor-pointer hover:opacity-80 text-amber-400"
+                className="text-[10px] font-bold underline cursor-pointer hover:opacity-80 text-violet-400"
               >
                 Switch Role
               </button>
@@ -604,9 +604,9 @@ function SolutionApp() {
           {activeTab === 'overview' && (
             <div className="space-y-5">
               {/* Hero Banner tailored to Problem Statement */}
-              <div className="rounded-2xl border bg-gradient-to-r via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3 border-amber-500/30 from-amber-950/40">
+              <div className="rounded-2xl border bg-gradient-to-r via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3 border-violet-500/30 from-violet-950/40">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold uppercase tracking-wider px-2 py-0.5 rounded border text-[10px] bg-amber-500/15 text-amber-400 border-amber-500/30">
+                  <span className="font-bold uppercase tracking-wider px-2 py-0.5 rounded border text-[10px] bg-violet-500/15 text-violet-400 border-violet-500/30">
                     {DOMAIN_SCHEMA.domainName}
                   </span>
                   <span className="rounded-full bg-emerald-500/20 text-emerald-300 px-2 py-0.5 text-[9px] font-mono font-bold">
@@ -627,7 +627,7 @@ function SolutionApp() {
                 <div className="flex items-center gap-3 pt-1">
                   <button
                     onClick={() => setActiveTab('portal')}
-                    className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold text-white shadow transition cursor-pointer bg-amber-600 hover:bg-amber-500"
+                    className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold text-white shadow transition cursor-pointer bg-violet-600 hover:bg-violet-500"
                   >
                     <span>Open {DOMAIN_SCHEMA.entityPlural} Workflow</span>
                     <ArrowRight className="size-3.5" />
@@ -648,7 +648,7 @@ function SolutionApp() {
                   <div key={idx} className="p-3 sm:p-3.5 rounded-xl bg-slate-900 border border-slate-800">
                     <div className="text-slate-400 text-[10px] sm:text-xs font-medium truncate">{kpi.label}</div>
                     <div className="font-bold text-white mt-1 text-xl">{kpi.value}</div>
-                    <div className="text-[10px] mt-0.5 font-semibold text-amber-400">
+                    <div className="text-[10px] mt-0.5 font-semibold text-violet-400">
                       {kpi.change || kpi.sub || '+12.4%'}
                     </div>
                   </div>
@@ -674,7 +674,7 @@ function SolutionApp() {
                         </div>
                         <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
                           <div
-                            className="h-full rounded-full transition-all duration-500 bg-amber-600"
+                            className="h-full rounded-full transition-all duration-500 bg-violet-600"
                             style={{ width: `${stage.pct || Math.max(20, 100 - idx * 20)}%` }}
                           />
                         </div>
@@ -723,7 +723,7 @@ function SolutionApp() {
                   </div>
                   <button
                     onClick={() => setActiveTab('portal')}
-                    className="text-xs text-amber-400 hover:underline font-semibold flex items-center gap-1 cursor-pointer"
+                    className="text-xs text-violet-400 hover:underline font-semibold flex items-center gap-1 cursor-pointer"
                   >
                     <span>View All ({items.length})</span>
                     <ArrowRight className="size-3" />
@@ -817,7 +817,7 @@ function SolutionApp() {
                 </button>
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="px-3.5 py-1.5 rounded-lg text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-md bg-amber-600 hover:bg-amber-500"
+                  className="px-3.5 py-1.5 rounded-lg text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-md bg-violet-600 hover:bg-violet-500"
                 >
                   <Plus className="size-3.5" />
                   <span>New {DOMAIN_SCHEMA.entityName}</span>
@@ -844,7 +844,7 @@ function SolutionApp() {
                   <tbody className="divide-y divide-slate-800/60">
                     {filteredItems.map(item => (
                       <tr key={item.id} className="hover:bg-slate-800/40 transition">
-                        <td className="py-3 px-4 font-mono font-bold text-amber-400">{item.id}</td>
+                        <td className="py-3 px-4 font-mono font-bold text-violet-400">{item.id}</td>
                         <td className="py-3 px-4 font-semibold text-white">{item.title}</td>
                         <td className="py-3 px-4 text-slate-300">{item.col1}</td>
                         <td className="py-3 px-4 text-slate-400">{item.col2}</td>
@@ -856,7 +856,7 @@ function SolutionApp() {
                               setItems(updated);
                               triggerToast(`Updated ${item.id} status to ${e.target.value}`);
                             }}
-                            className="text-[11px] px-2.5 py-1 rounded-full font-semibold bg-slate-950 border border-slate-700 text-amber-400 cursor-pointer focus:outline-none"
+                            className="text-[11px] px-2.5 py-1 rounded-full font-semibold bg-slate-950 border border-slate-700 text-violet-400 cursor-pointer focus:outline-none"
                           >
                             {(DOMAIN_SCHEMA.statuses || []).map(s => (
                               <option key={s} value={s}>{s}</option>
@@ -1271,21 +1271,21 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
             <div className="flex border-b border-slate-800 bg-slate-950/40 p-1">
               <button
                 onClick={() => setAuthTab('demo')}
-                className={'flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ' + (authTab === 'demo' ? 'bg-amber-600 text-white shadow' : 'text-slate-400 hover:text-white')}
+                className={'flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ' + (authTab === 'demo' ? 'bg-violet-600 text-white shadow' : 'text-slate-400 hover:text-white')}
               >
                 <Zap className="size-3.5 text-amber-300" />
                 <span>⚡ 1-Click Demo Logins</span>
               </button>
               <button
                 onClick={() => setAuthTab('login')}
-                className={'flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ' + (authTab === 'login' ? 'bg-amber-600 text-white shadow' : 'text-slate-400 hover:text-white')}
+                className={'flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ' + (authTab === 'login' ? 'bg-violet-600 text-white shadow' : 'text-slate-400 hover:text-white')}
               >
                 <LogIn className="size-3.5" />
                 <span>Sign In</span>
               </button>
               <button
                 onClick={() => setAuthTab('signup')}
-                className={'flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ' + (authTab === 'signup' ? 'bg-amber-600 text-white shadow' : 'text-slate-400 hover:text-white')}
+                className={'flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ' + (authTab === 'signup' ? 'bg-violet-600 text-white shadow' : 'text-slate-400 hover:text-white')}
               >
                 <UserPlus className="size-3.5" />
                 <span>Create Account</span>
@@ -1322,7 +1322,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                         </div>
                         <button
                           type="button"
-                          className="w-full mt-1 py-1.5 rounded-lg text-white text-xs font-bold transition flex items-center justify-center gap-1 cursor-pointer bg-amber-600 hover:bg-amber-500"
+                          className="w-full mt-1 py-1.5 rounded-lg text-white text-xs font-bold transition flex items-center justify-center gap-1 cursor-pointer bg-violet-600 hover:bg-violet-500"
                         >
                           <span>Log in as {u.role.split(' ')[0]}</span>
                           <ArrowRight className="size-3" />
@@ -1379,7 +1379,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                     </button>
                     <button
                       type="submit"
-                      className="px-4 py-2 rounded-xl text-white text-xs font-bold transition cursor-pointer shadow-md bg-amber-600 hover:bg-amber-500"
+                      className="px-4 py-2 rounded-xl text-white text-xs font-bold transition cursor-pointer shadow-md bg-violet-600 hover:bg-violet-500"
                     >
                       Sign In to Portal
                     </button>
@@ -1446,7 +1446,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                   <div className="pt-2 flex justify-end">
                     <button
                       type="submit"
-                      className="px-4 py-2 rounded-xl text-white text-xs font-bold transition cursor-pointer shadow-md bg-amber-600 hover:bg-amber-500"
+                      className="px-4 py-2 rounded-xl text-white text-xs font-bold transition cursor-pointer shadow-md bg-violet-600 hover:bg-violet-500"
                     >
                       Register & Enter Platform
                     </button>
@@ -1557,7 +1557,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl px-4 py-2 text-xs font-bold text-white shadow-md cursor-pointer bg-amber-600 hover:bg-amber-500"
+                  className="rounded-xl px-4 py-2 text-xs font-bold text-white shadow-md cursor-pointer bg-violet-600 hover:bg-violet-500"
                 >
                   Save to Database
                 </button>
