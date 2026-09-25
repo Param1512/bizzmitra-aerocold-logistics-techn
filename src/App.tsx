@@ -323,7 +323,7 @@ function SolutionApp() {
   }, [items, search, statusFilter]);
 
   return (
-    <div className={`min-h-screen bg-slate-950 text-slate-100 font-sans flex ${'flex-col md:flex-row'} selection:bg-amber-500/30 selection:text-amber-200`}>
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans flex flex-col md:flex-row selection:bg-amber-500/30 selection:text-amber-200">
       {/* Toast Notification */}
       {authToast && (
         <div className="fixed bottom-6 right-6 z-50 bg-amber-600 border border-amber-400/40 text-white px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold animate-in fade-in slide-in-from-bottom-3 duration-200">
@@ -333,11 +333,10 @@ function SolutionApp() {
       )}
 
       {/* ======================================================== */}
-      {/* OPTION A: LEFT SIDEBAR NAVIGATION (Desktop & Tablet)     */}
+      {/* LEFT SIDEBAR NAVIGATION (Desktop & Tablet)               */}
       {/* Matches user's desired UI (Image 2)                      */}
       {/* ======================================================== */}
-      {true && (
-        <aside className="w-full md:w-64 border-r border-slate-800 bg-slate-900/90 p-4 flex flex-col justify-between shrink-0">
+      <aside className="w-full md:w-64 md:h-screen md:sticky md:top-0 border-r border-slate-800 bg-slate-900/95 p-4 flex flex-col justify-between shrink-0 overflow-y-auto z-20">
           <div className="space-y-4">
             {/* Brand */}
             <div className="flex items-center gap-2.5">
@@ -525,217 +524,54 @@ function SolutionApp() {
                 <span>Sign Out</span>
               </button>
             </div>
-          </div>
         </aside>
-      )}
 
       {/* Main Content Pane */}
-      <div className="flex-1 flex flex-col min-w-0 bg-slate-950">
-        {/* Top Header */}
-        {true ? (
-          /* Header Variant 2: Desktop/Tablet with Left Sidebar (Matches Image 2) */
-          <div className="px-5 py-3 border-b border-slate-800 bg-slate-900/60 flex items-center justify-between shrink-0">
-            <div className="flex items-center gap-2">
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-                {activeTab === 'overview' ? 'OPERATIONS COMMAND CENTER' :
-                 activeTab === 'portal' ? `${DOMAIN_SCHEMA.entityPlural.toUpperCase()} WORKFLOW` :
-                 activeTab === 'architecture' ? 'ARCHITECTURE & DB TELEMETRY' :
-                 activeTab === 'roadmap' ? 'EXECUTION ROADMAP & SPRINTS' :
-                 activeTab === 'team' ? 'TEAM & ROLE ACCESS CONTROL' : 'PERFORMANCE & SLA INTELLIGENCE'}
-              </h4>
-              <span className="text-[10px] text-slate-500 font-mono hidden sm:inline">
-                · {DOMAIN_SCHEMA.entityPlural} Architecture
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              {/* Persona Indicator Badge */}
-              {currentUser && (
-                <div className="flex items-center gap-2 bg-slate-950/80 px-2.5 py-1 rounded-xl border border-slate-800 text-xs">
-                  <div className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-slate-300 font-semibold">{currentUser.name}</span>
-                  <span className="text-[10px] text-amber-400 font-mono bg-amber-950/60 px-1.5 py-0.2 rounded hidden sm:inline">
-                    {currentUser.role}
-                  </span>
-                </div>
-              )}
-
-              <button
-                onClick={() => { setAuthTab('demo'); setIsAuthModalOpen(true); }}
-                className="flex items-center gap-1.5 rounded-xl border border-slate-700/80 bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-bold text-slate-200 transition cursor-pointer"
-              >
-                <KeyRound className="size-3 text-amber-400" />
-                <span>Demo Logins & RBAC</span>
-              </button>
-
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition cursor-pointer bg-amber-600 hover:bg-amber-500"
-              >
-                <Plus className="size-3.5" />
-                <span>New {DOMAIN_SCHEMA.entityName}</span>
-              </button>
-            </div>
+      <div className="flex-1 flex flex-col min-w-0 bg-slate-950 min-h-screen">
+        {/* Top Header (Matches Image 2) */}
+        <header className="px-5 py-3 border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-10 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+              {activeTab === 'overview' ? 'OPERATIONS COMMAND CENTER' :
+               activeTab === 'portal' ? `${DOMAIN_SCHEMA.entityPlural.toUpperCase()} WORKFLOW` :
+               activeTab === 'architecture' ? 'ARCHITECTURE & DB TELEMETRY' :
+               activeTab === 'roadmap' ? 'EXECUTION ROADMAP & SPRINTS' :
+               activeTab === 'team' ? 'TEAM & ROLE ACCESS CONTROL' : 'PERFORMANCE & SLA INTELLIGENCE'}
+            </h4>
+            <span className="text-[10px] text-slate-500 font-mono hidden sm:inline">
+              · {DOMAIN_SCHEMA.entityPlural} Architecture
+            </span>
           </div>
-        ) : (
-          /* Header Variant 3: Top Navigation Layout */
-          <header className="border-b border-slate-800/80 bg-slate-900/90 backdrop-blur sticky top-0 z-30">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="size-9 rounded-xl flex items-center justify-center shadow-lg text-white shrink-0 bg-amber-600 shadow-amber-500/20">
-                  <Building2 className="size-5" />
-                </div>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-bold text-white tracking-tight text-sm sm:text-base truncate">{DOMAIN_SCHEMA.appTitle}</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider whitespace-nowrap shrink-0 border bg-amber-500/15 text-amber-400 border-amber-500/30">
-                      {DOMAIN_SCHEMA.domainName}
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-slate-400 hidden sm:block truncate max-w-xs md:max-w-md">{DOMAIN_SCHEMA.tagline}</p>
-                </div>
+
+          <div className="flex items-center gap-3">
+            {/* Persona Indicator Badge */}
+            {currentUser && (
+              <div className="flex items-center gap-2 bg-slate-950/80 px-2.5 py-1 rounded-xl border border-slate-800 text-xs">
+                <div className="size-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-slate-300 font-semibold">{currentUser.name}</span>
+                <span className="text-[10px] ${theme.primaryText} font-mono bg-slate-900 px-1.5 py-0.2 rounded hidden sm:inline">
+                  {currentUser.role}
+                </span>
               </div>
+            )}
 
-              <div className="flex items-center gap-3 shrink-0">
-                <div 
-                  onClick={handlePingTest}
-                  title="Click to test live PostgreSQL & edge gateway latency"
-                  className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-800/90 border border-slate-700/60 text-[11px] text-slate-300 cursor-pointer hover:border-amber-500/50 transition shrink-0"
-                >
-                  <div className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Postgres Live</span>
-                  <span className="font-mono text-emerald-400 font-bold">{isPinging ? '...' : `${dbLatency}ms`}</span>
-                </div>
+            <button
+              onClick={() => { setAuthTab('demo'); setIsAuthModalOpen(true); }}
+              className="flex items-center gap-1.5 rounded-xl border border-slate-700/80 bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-bold text-slate-200 transition cursor-pointer"
+            >
+              <KeyRound className="size-3 text-amber-400" />
+              <span>Demo Logins & RBAC</span>
+            </button>
 
-                {currentUser ? (
-                  <div className="flex items-center gap-2 bg-slate-800/80 border border-slate-700/70 rounded-xl p-1 pr-2.5 shrink-0">
-                    <div className="size-7 rounded-lg flex items-center justify-center text-xs font-bold text-white shadow overflow-hidden shrink-0 bg-amber-600">
-                      {currentUser.avatar ? (
-                        <img src={currentUser.avatar} alt={currentUser.name} className="size-full object-cover" />
-                      ) : (
-                        <span>{currentUser.name ? currentUser.name.charAt(0) : 'U'}</span>
-                      )}
-                    </div>
-                    <div className="text-left hidden md:block leading-tight max-w-[130px]">
-                      <div className="text-xs font-semibold text-white truncate">{currentUser.name}</div>
-                      <div className="text-[10px] font-mono truncate text-amber-400">{currentUser.role}</div>
-                    </div>
-                    <button
-                      onClick={() => { setAuthTab('demo'); setIsAuthModalOpen(true); }}
-                      title="Switch Role / View 1-Click Demo Logins"
-                      className="p-1 rounded-lg hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer flex items-center gap-1 text-[11px]"
-                    >
-                      <KeyRound className="size-3.5 text-amber-400" />
-                      <span className="hidden sm:inline">Roles</span>
-                    </button>
-                    <button
-                      onClick={handleSignOut}
-                      title="Sign Out"
-                      className="p-1 rounded-lg hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 transition cursor-pointer"
-                    >
-                      <LogOut className="size-3.5" />
-                    </button>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => { setAuthTab('demo'); setIsAuthModalOpen(true); }}
-                      className="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-sm"
-                    >
-                      <KeyRound className="size-3.5" />
-                      <span>1-Click Demo Roles</span>
-                    </button>
-                    <button
-                      onClick={() => { setAuthTab('login'); setIsAuthModalOpen(true); }}
-                      className="px-3 py-1.5 rounded-xl text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-sm bg-amber-600 hover:bg-amber-500"
-                    >
-                      <LogIn className="size-3.5" />
-                      <span>Sign In</span>
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* 6 Core Navigation Tabs */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 flex gap-1 overflow-x-auto scrollbar-none py-1 border-t border-slate-800/60">
-              <button
-                onClick={() => setActiveTab('overview')}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-                  activeTab === 'overview'
-                    ? 'bg-amber-600 text-white shadow-xs font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
-                <Activity className="size-3.5" />
-                <span>Overview & Activity</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('portal')}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-                  activeTab === 'portal'
-                    ? 'bg-amber-600 text-white shadow-xs font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
-                <Boxes className="size-3.5" />
-                <span>{DOMAIN_SCHEMA.entityPlural} Workflow</span>
-                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">{items.length}</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('architecture')}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-                  activeTab === 'architecture'
-                    ? 'bg-amber-600 text-white shadow-xs font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
-                <Server className="size-3.5" />
-                <span>Architecture & DB Telemetry</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('roadmap')}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-                  activeTab === 'roadmap'
-                    ? 'bg-amber-600 text-white shadow-xs font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
-                <CheckSquare className="size-3.5" />
-                <span>Roadmap & Sprints</span>
-                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-emerald-500/20 text-emerald-300">Live</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('team')}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-                  activeTab === 'team'
-                    ? 'bg-amber-600 text-white shadow-xs font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
-                <Users className="size-3.5" />
-                <span>Team & RBAC Matrix</span>
-                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">{users.length}</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('analytics')}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-                  activeTab === 'analytics'
-                    ? 'bg-amber-600 text-white shadow-xs font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
-                <TrendingUp className="size-3.5" />
-                <span>Performance & SLA</span>
-              </button>
-            </div>
-          </header>
-        )}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition cursor-pointer ${theme.primaryBg} ${theme.primaryHover}"
+            >
+              <Plus className="size-3.5" />
+              <span>New {DOMAIN_SCHEMA.entityName}</span>
+            </button>
+          </div>
+        </header>
 
         {/* Active User Persona Banner (Matches Image 2 Sub-bar) */}
         {currentUser && (
@@ -981,7 +817,7 @@ function SolutionApp() {
                 </button>
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-md shadow-indigo-600/30"
+                  className="px-3.5 py-1.5 rounded-lg text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-md bg-amber-600 hover:bg-amber-500"
                 >
                   <Plus className="size-3.5" />
                   <span>New {DOMAIN_SCHEMA.entityName}</span>
@@ -1008,7 +844,7 @@ function SolutionApp() {
                   <tbody className="divide-y divide-slate-800/60">
                     {filteredItems.map(item => (
                       <tr key={item.id} className="hover:bg-slate-800/40 transition">
-                        <td className="py-3 px-4 font-mono font-bold text-indigo-400">{item.id}</td>
+                        <td className="py-3 px-4 font-mono font-bold text-amber-400">{item.id}</td>
                         <td className="py-3 px-4 font-semibold text-white">{item.title}</td>
                         <td className="py-3 px-4 text-slate-300">{item.col1}</td>
                         <td className="py-3 px-4 text-slate-400">{item.col2}</td>
@@ -1020,7 +856,7 @@ function SolutionApp() {
                               setItems(updated);
                               triggerToast(`Updated ${item.id} status to ${e.target.value}`);
                             }}
-                            className="text-[11px] px-2.5 py-1 rounded-full font-semibold bg-slate-950 border border-slate-700 text-indigo-300 cursor-pointer focus:outline-none focus:border-indigo-500"
+                            className="text-[11px] px-2.5 py-1 rounded-full font-semibold bg-slate-950 border border-slate-700 text-amber-400 cursor-pointer focus:outline-none"
                           >
                             {(DOMAIN_SCHEMA.statuses || []).map(s => (
                               <option key={s} value={s}>{s}</option>
@@ -1399,6 +1235,17 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
             </div>
           </div>
         )}
+
+        {/* Footer */}
+        <footer className="border-t border-slate-800/80 py-4 px-6 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2 mt-8">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="size-4 text-emerald-400" />
+            <span>Tailored Solution for {DOMAIN_SCHEMA.domainName} · Powered by BizzMitra AI Engine</span>
+          </div>
+          <div className="text-[11px] font-mono text-emerald-400">
+            PostgreSQL 16 · Supabase RLS · Deno Edge Workers
+          </div>
+        </footer>
       </div>
     </div>
 
@@ -1424,27 +1271,21 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
             <div className="flex border-b border-slate-800 bg-slate-950/40 p-1">
               <button
                 onClick={() => setAuthTab('demo')}
-                className={`flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ${
-                  authTab === 'demo' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'
-                }`}
+                className={'flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ' + (authTab === 'demo' ? 'bg-amber-600 text-white shadow' : 'text-slate-400 hover:text-white')}
               >
                 <Zap className="size-3.5 text-amber-300" />
                 <span>⚡ 1-Click Demo Logins</span>
               </button>
               <button
                 onClick={() => setAuthTab('login')}
-                className={`flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ${
-                  authTab === 'login' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'
-                }`}
+                className={'flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ' + (authTab === 'login' ? 'bg-amber-600 text-white shadow' : 'text-slate-400 hover:text-white')}
               >
                 <LogIn className="size-3.5" />
                 <span>Sign In</span>
               </button>
               <button
                 onClick={() => setAuthTab('signup')}
-                className={`flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ${
-                  authTab === 'signup' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'
-                }`}
+                className={'flex-1 py-2 text-xs font-bold rounded-lg transition cursor-pointer flex items-center justify-center gap-1.5 ' + (authTab === 'signup' ? 'bg-amber-600 text-white shadow' : 'text-slate-400 hover:text-white')}
               >
                 <UserPlus className="size-3.5" />
                 <span>Create Account</span>
@@ -1481,7 +1322,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                         </div>
                         <button
                           type="button"
-                          className="w-full mt-1 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition flex items-center justify-center gap-1 cursor-pointer"
+                          className="w-full mt-1 py-1.5 rounded-lg text-white text-xs font-bold transition flex items-center justify-center gap-1 cursor-pointer bg-amber-600 hover:bg-amber-500"
                         >
                           <span>Log in as {u.role.split(' ')[0]}</span>
                           <ArrowRight className="size-3" />
@@ -1538,7 +1379,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                     </button>
                     <button
                       type="submit"
-                      className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition cursor-pointer shadow-md shadow-indigo-600/30"
+                      className="px-4 py-2 rounded-xl text-white text-xs font-bold transition cursor-pointer shadow-md bg-amber-600 hover:bg-amber-500"
                     >
                       Sign In to Portal
                     </button>
@@ -1605,7 +1446,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                   <div className="pt-2 flex justify-end">
                     <button
                       type="submit"
-                      className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition cursor-pointer shadow-md shadow-indigo-600/30"
+                      className="px-4 py-2 rounded-xl text-white text-xs font-bold transition cursor-pointer shadow-md bg-amber-600 hover:bg-amber-500"
                     >
                       Register & Enter Platform
                     </button>
@@ -1716,7 +1557,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-indigo-600 hover:bg-indigo-500 px-4 py-2 text-xs font-bold text-white shadow-md shadow-indigo-600/30 cursor-pointer"
+                  className="rounded-xl px-4 py-2 text-xs font-bold text-white shadow-md cursor-pointer bg-amber-600 hover:bg-amber-500"
                 >
                   Save to Database
                 </button>
@@ -1725,17 +1566,6 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
           </div>
         </div>
       )}
-
-      {/* Footer */}
-      <footer className="border-t border-slate-800/80 py-4 px-6 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <ShieldCheck className="size-4 text-emerald-400" />
-          <span>Tailored Solution for {DOMAIN_SCHEMA.domainName} · Powered by BizzMitra AI Engine</span>
-        </div>
-        <div className="text-[11px] font-mono text-emerald-400">
-          PostgreSQL 16 · Supabase RLS · Deno Edge Workers
-        </div>
-      </footer>
     </div>
   );
 }
