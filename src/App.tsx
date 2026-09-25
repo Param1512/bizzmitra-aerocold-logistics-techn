@@ -1045,8 +1045,8 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
 
         {/* Tab 4: Execution Roadmap & Sprints */}
         {activeTab === 'roadmap' && (
-          <div className="space-y-6">
-            <div className="bg-slate-900/90 border border-slate-800/80 p-4 rounded-xl flex items-center justify-between">
+          <div className="w-full space-y-6">
+            <div className="w-full bg-slate-900/90 border border-slate-800/80 p-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
                   <CheckSquare className="size-4 text-emerald-400" />
@@ -1056,14 +1056,14 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                   Click any task checkbox to update milestone completion dynamically in the database.
                 </p>
               </div>
-              <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+              <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shrink-0">
                 Interactive Sprint Engine
               </span>
             </div>
 
-            <div className="space-y-4">
+            <div className="w-full space-y-4">
               {sprints.map((sprint) => (
-                <div key={sprint.id} className="rounded-xl bg-slate-900/90 border border-slate-800/80 p-5 space-y-4">
+                <div key={sprint.id} className="w-full rounded-xl bg-slate-900/90 border border-slate-800/80 p-5 space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
@@ -1091,7 +1091,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
                   </div>
 
                   {/* Sprint Tasks Checkboxes */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-2 border-t border-slate-800/80">
+                  <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-2 border-t border-slate-800/80">
                     {sprint.tasks.map((task) => (
                       <div
                         key={task.id}
@@ -1124,8 +1124,8 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
 
         {/* Tab 5: Team & RBAC Permissions Matrix */}
         {activeTab === 'team' && (
-          <div className="space-y-6">
-            <div className="bg-slate-900/90 border border-slate-800/80 p-4 rounded-xl flex items-center justify-between">
+          <div className="w-full space-y-6">
+            <div className="w-full bg-slate-900/90 border border-slate-800/80 p-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
                   <Users className="size-4 text-indigo-400" />
@@ -1137,7 +1137,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
               </div>
               <button
                 onClick={() => { setAuthTab('signup'); setIsAuthModalOpen(true); }}
-                className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition flex items-center gap-2 cursor-pointer shadow-md shadow-indigo-600/30"
+                className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition flex items-center gap-2 cursor-pointer shadow-md shadow-indigo-600/30 shrink-0"
               >
                 <UserPlus className="size-3.5" />
                 <span>Add Team Member</span>
@@ -1145,7 +1145,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
             </div>
 
             {/* User Cards with 1-Click Role Switch */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {users.map((u) => {
                 const isActive = currentUser?.email === u.email;
                 return (
@@ -1207,10 +1207,10 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
             </div>
 
             {/* RBAC Permission Matrix Table */}
-            <div className="rounded-xl border border-slate-800/80 bg-slate-900/90 p-5 space-y-3">
+            <div className="w-full rounded-xl border border-slate-800/80 bg-slate-900/90 p-5 space-y-3">
               <h4 className="text-xs font-bold text-white uppercase tracking-wider">Role Permission Governance Matrix</h4>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-slate-300">
+              <div className="w-full overflow-x-auto">
+                <table className="w-full text-left text-xs text-slate-300 min-w-[550px]">
                   <thead className="bg-slate-950/80 text-[10px] text-slate-400 uppercase tracking-wider border-b border-slate-800">
                     <tr>
                       <th className="py-2.5 px-3">System Permission</th>
@@ -1258,8 +1258,8 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
 
         {/* Tab 6: SLA & Performance Intelligence */}
         {activeTab === 'analytics' && (
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="w-full space-y-6">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="rounded-xl bg-slate-900/90 border border-slate-800/80 p-5 space-y-3">
                 <div className="text-xs font-semibold text-slate-400">Target SLA Adherence</div>
                 <div className="text-3xl font-extrabold text-emerald-400">98.4%</div>
@@ -1288,7 +1288,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
               </div>
             </div>
 
-            <div className="rounded-xl bg-slate-900/90 border border-slate-800/80 p-5 space-y-4">
+            <div className="w-full rounded-xl bg-slate-900/90 border border-slate-800/80 p-5 space-y-4">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <TrendingUp className="size-4 text-indigo-400" />
                 <span>Operational Velocity by Stage</span>
@@ -1314,7 +1314,7 @@ ALTER TABLE public.${DOMAIN_SCHEMA.domainKey}_records ENABLE ROW LEVEL SECURITY;
         )}
 
         {/* Footer */}
-        <footer className="border-t border-slate-800/80 py-4 px-6 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2 mt-8">
+        <footer className="w-full border-t border-slate-800/80 py-4 px-6 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2 mt-8">
           <div className="flex items-center gap-2">
             <ShieldCheck className="size-4 text-emerald-400" />
             <span>Tailored Solution for {DOMAIN_SCHEMA.domainName} · Powered by BizzMitra AI Engine</span>
